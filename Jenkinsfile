@@ -5,10 +5,13 @@ pipeline{
     stages{
 
         stage('Git checkout')
+        
+            steps{
 
-            script{
-                git branch: 'main', url: 'https://github.com/vigi06/full-devops-project.git'
+                script{
+                    git branch: 'main', url: 'https://github.com/vigi06/full-devops-project.git'
 
+                }
             }
 
 
