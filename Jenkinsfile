@@ -11,8 +11,10 @@ pipeline{
             steps{
 
                 script{
-                 branch: "main"
-                 url: "https://github.com/vigi06/full-devops-project.git"
+                gitCheckout(  
+                    branch: "main"
+                    url: "https://github.com/vigi06/full-devops-project.git"
+                )
 
                 }
             }
