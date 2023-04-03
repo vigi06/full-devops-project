@@ -4,7 +4,7 @@ pipeline{
 
     stages{
 
-        stage('Git checkout')
+        stage('Git checkout'){
         
             steps{
 
@@ -13,6 +13,7 @@ pipeline{
 
                 }
             }
+        }
 
 
     }
