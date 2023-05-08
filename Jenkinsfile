@@ -1,3 +1,5 @@
+@Library('shared-library') _
+
 pipeline{
 
     agent any
@@ -9,7 +11,10 @@ pipeline{
             steps{
 
                 script{
-                    git branch: 'main', url: 'https://github.com/vigi06/full-devops-project.git'
+                    gitCheckout(
+                        branch: "main"
+                        url: 'https://github.com/vigi06/full-devops-project.git'
+                    )
                 }
             }
         }
