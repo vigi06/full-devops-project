@@ -19,6 +19,7 @@ pipeline{
             }
         }
 
+        
         stage('Unit Testing'){
             
             steps{
@@ -28,7 +29,17 @@ pipeline{
                 }
             }
         }
+        
 
+        stage('Integration Testing'){
+            
+            steps{
+
+                script{
+                    mvnIntegrationTest()
+                }
+            }
+        }
 
 
 
