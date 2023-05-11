@@ -91,5 +91,18 @@ pipeline {
                 }
             }
         }
+
+        stage('Docker Image push') {
+            when {
+                expression { params.action == 'create' }
+            }
+            steps {
+                node('worker') {
+                    script {
+                        dockerImagePush("${params.ImageName}","${params.imageTag}","${params.DockerHubUser}")
+                    }
+                }
+            }
+        }
     }
 }
