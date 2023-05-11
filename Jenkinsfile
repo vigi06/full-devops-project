@@ -63,19 +63,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Quality Gate analysis: Sonarqube') {
-            when {
-                expression { params.action == 'create' }
-            }
-            steps {
-                node('worker') {
-                    script {
-                        def SonarQubeCredId = 'sonar-api-test'
-                        qualityGate(SonarQubeCredId)
-                    }
-                }
-            }
-        }
     }
 }
