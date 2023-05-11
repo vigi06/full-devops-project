@@ -78,5 +78,18 @@ pipeline {
                 }
             }
         }
+
+         stage('Docker Image Scam') {
+            when {
+                expression { params.action == 'create' }
+            }
+            steps {
+                node('worker') {
+                    script {
+                        dockerImageScan("${params.ImageName}","${params.imageTag}","${params.DockerHubUser}")
+                    }
+                }
+            }
+        }
     }
 }
