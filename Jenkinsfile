@@ -73,7 +73,7 @@ pipeline {
             steps {
                 node('worker') {
                     script {
-                        dockerBuild("${params.ImageName}","${params.ImageTag}","${params.DockerHubUser}")
+                        dockerBuild("${params.ImageName}","${params.imageTag}","${params.DockerHubUser}")
                     }
                 }
             }
