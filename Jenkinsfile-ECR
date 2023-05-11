@@ -65,57 +65,6 @@ pipeline {
                 }
             }
         }
-
-        stage('Docker build') {
-            when {
-                expression { params.action == 'create' }
-            }
-            steps {
-                node('worker') {
-                    script {
-                        dockerBuild("${params.ImageName}","${params.imageTag}","${params.DockerHubUser}")
-                    }
-                }
-            }
-        }
-
-         stage('Docker Image Scam') {
-            when {
-                expression { params.action == 'create' }
-            }
-            steps {
-                node('worker') {
-                    script {
-                        dockerImageScan("${params.ImageName}","${params.imageTag}","${params.DockerHubUser}")
-                    }
-                }
-            }
-        }
-
-        stage('Docker Image push') {
-            when {
-                expression { params.action == 'create' }
-            }
-            steps {
-                node('worker') {
-                    script {
-                        dockerImagePush("${params.ImageName}","${params.imageTag}","${params.DockerHubUser}")
-                    }
-                }
-            }
-        }
-
-        stage('Docker Image Cleanup: DockerHub') {
-            when {
-                expression { params.action == 'create' }
-            }
-            steps {
-                node('worker') {
-                    script {
-                        dockerImageCleanup("${params.ImageName}","${params.imageTag}","${params.DockerHubUser}")
-                    }
-                }
-            }
-        }
+ 
     }
 }
