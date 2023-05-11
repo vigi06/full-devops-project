@@ -50,15 +50,14 @@ pipeline {
             }
         }
 
-        stage('Static code analysis: Sonarqube') {
+        stage('Build using maven') {
             when {
                 expression { params.action == 'create' }
             }
             steps {
                 node('worker') {
                     script {
-                        def SonarQubeCredId = 'sonar-api-test'
-                        staticCodeAnalysis(SonarQubeCredId)
+                        mvnBuild()
                     }
                 }
             }
